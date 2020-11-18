@@ -1,7 +1,7 @@
 # security
 
 #### Description
-spring_security_test
+spring_security
 
 #### Software Architecture
 Software architecture description
