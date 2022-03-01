@@ -11,6 +11,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @SpringBootTest
 class EsaypoiApplicationTests {
@@ -48,7 +51,20 @@ class EsaypoiApplicationTests {
                 //System.out.println(cell.getCellType());
             }
         }
+    }
 
+    @Test
+    void newDateTime(){
+        Instant now = Instant.now();
+        System.out.println(now);
+
+        LocalDate now1 = LocalDate.now();
+        System.out.println(now1);
+
+        LocalTime now2 = LocalTime.now();
+        System.out.println(now2);
+        System.out.println(now2.getSecond());
+        System.out.println(now2.getNano());
 
     }
 }
