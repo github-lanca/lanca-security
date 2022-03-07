@@ -8,9 +8,13 @@
         <version>2.4.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+    <packaging>pom</packaging>
+
     <groupId>cn.lanca.test</groupId>
     <artifactId>security</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
     <name>security</name>
     <description>Demo project for Spring Boot</description>
 
@@ -61,5 +65,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <!-- 模块化标识 -->
+    <modules>
+        <module>esaypoi</module>
+        <module>springboot_mpp</module>
+        <module>springboot_youzan</module>
+    </modules>
 
 </project>

@@ -8,15 +8,32 @@
         <version>2.6.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>cn.lanca</groupId>
     <artifactId>springboot_youzan</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
     <name>springboot_youzan</name>
     <description>springboot_youzan</description>
+
     <properties>
         <java.version>1.8</java.version>
+        <youzan.sdk.core.version>1.0.25-RELEASE</youzan.sdk.core.version>
+        <youzan.sdk.gen.version>1.0.22.10000097202202181430-RELEASE</youzan.sdk.gen.version>
     </properties>
+
     <dependencies>
+
+        <dependency>
+            <groupId>com.youzan.cloud</groupId>
+            <artifactId>open-sdk-gen</artifactId>
+            <version>${youzan.sdk.gen.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.youzan.cloud</groupId>
+            <artifactId>open-sdk-core</artifactId>
+            <version>${youzan.sdk.core.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -31,6 +48,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--beanVO字段校验-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
         <dependency>
@@ -59,5 +81,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

@@ -19,6 +19,7 @@ public interface GetToken {
     /**
      * GET请求
      * 172.27.16.11:43900/get-youzan-token?grantId=102631073
+     * ff28cd748cf7bae04c3a10abf7796ee
      *
      * @param grantId 企业id
      * @return token
