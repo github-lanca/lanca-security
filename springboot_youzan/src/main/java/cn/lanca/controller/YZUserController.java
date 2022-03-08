@@ -6,6 +6,10 @@ import cn.lanca.vo.base.AjaxResult;
 import cn.lanca.vo.user.CreateUserVo;
 import cn.lanca.vo.user.CustomerGetVo;
 import cn.lanca.vo.user.CustomerMemberVo;
+import cn.lanca.vo.user.IncreasePointVo;
+import cn.lanca.vo.user.ItemSearchVo;
+import cn.lanca.vo.user.RetailSkuVo;
+import com.youzan.cloud.open.sdk.gen.v3_0_0.model.YouzanRetailOpenOfflineSpuReleaseParams;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
@@ -93,5 +97,57 @@ public class YZUserController {
             return AjaxResult.error("参数不能为空");
         }
         return iyzUserService.customerCreateMember(customerMemberVo);
+    }
+
+
+    //------------------------------------------------
+    // #10 增加有效期积分
+    // API描述：增加用户积分接口（有效期积分）
+    // https://open.youzanyun.com/api/youzan.crm.customer.points.operate.increasewithexpire/4.0.0
+    @PostMapping("/yzUser/increaseWithExpire")
+    public AjaxResult increaseWithExpire(@RequestBody @Validated IncreasePointVo increasePointVo){
+        return iyzUserService.increaseWithExpire(increasePointVo);
+    }
+
+
+
+    //----------------------------------------------
+    //#11.API名称：批量查询店铺下商品列表
+    // https://open.youzanyun.com/api/youzan.item.common.search/1.0.0
+    @PostMapping("/yzUser/itemBatchSearch")
+    public AjaxResult itemBatchSearch(@RequestBody @Validated ItemSearchVo itemSearchVo){
+        return iyzUserService.itemBatchSearch(itemSearchVo);
+    }
+
+    //----------------------------------------------
+    // #12.查询商品规格信息详情
+    // https://open.youzanyun.com/api/youzan.retail.open.sku.get/3.0.0
+    // https://doc.youzanyun.com/detail/API/0/247
+    @PostMapping("/yzUser/retailSkuGet")
+    public AjaxResult retailSkuGet(@RequestBody @Validated RetailSkuVo retailSkuVo){
+        return iyzUserService.retailSkuGet(retailSkuVo);
+    }
+
+    // getSkuList
+    @PostMapping("/yzUser/getSkuList")
+    public AjaxResult getSkuList(){
+        return iyzUserService.getSkuList();
+    }
+
+    //----------------------------------------------
+    // #13.商品新增接口
+    // https://doc.youzanyun.com/detail/API/0/1113
+    @PostMapping("/yzUser/itemAdd")
+    public AjaxResult itemAdd(@RequestBody @Validated cn.lanca.vo.user.item.ItemAddVo itemAddVo){
+        return iyzUserService.itemAdd(itemAddVo);
+    }
+
+    //----------------------------------------------
+    // #14.发布商品库商品至门店
+    // https://doc.youzanyun.com/detail/API/0/294
+    // https://open.youzanyun.com/api/youzan.retail.open.offline.spu.release/3.0.0
+    @PostMapping("/yzUser/retailOfflineSpuRelease")
+    public AjaxResult retailOfflineSpuRelease(@RequestBody @Validated YouzanRetailOpenOfflineSpuReleaseParams spuReleaseParams){
+        return iyzUserService.retailOfflineSpuRelease(spuReleaseParams);
     }
 }

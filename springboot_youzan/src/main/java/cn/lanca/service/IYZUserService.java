@@ -4,6 +4,10 @@ import cn.lanca.vo.base.AjaxResult;
 import cn.lanca.vo.user.CreateUserVo;
 import cn.lanca.vo.user.CustomerGetVo;
 import cn.lanca.vo.user.CustomerMemberVo;
+import cn.lanca.vo.user.IncreasePointVo;
+import cn.lanca.vo.user.ItemSearchVo;
+import cn.lanca.vo.user.RetailSkuVo;
+import com.youzan.cloud.open.sdk.gen.v3_0_0.model.YouzanRetailOpenOfflineSpuReleaseParams;
 
 import java.util.List;
 
@@ -64,4 +68,60 @@ public interface IYZUserService {
      */
     AjaxResult customerGet(CustomerGetVo customerGetVo);
 
+    /**
+     * title: <font size="1"><b> 增加有效期积分</b></font><br>
+     * description:<font size="1"><b> 增加有效期积分</b></font><br>
+     *
+     * @param increasePointVo increasePointVo
+     * @author <a href="">meihongliang</a><br>
+     * @since 2022/3/8 10:01 <br>
+     * @return  AjaxResult <br>
+     */
+    AjaxResult increaseWithExpire(IncreasePointVo increasePointVo);
+
+    /**
+     * title: <font size="1"><b> 批量查询店铺下商品列表</b></font><br>
+     * description:<font size="1"><b> 批量查询店铺下商品列表</b></font><br>
+     *
+     * @param itemSearchVo itemSearchVo
+     * @author <a href="">meihongliang</a><br>
+     * @since 2022/3/8 11:17 <br>
+     * @return  AjaxResult<br>
+     */
+    AjaxResult itemBatchSearch(ItemSearchVo itemSearchVo);
+
+    /**
+     * title: <font size="1"><b>#12.查询商品规格信息详情 </b></font><br>
+     * description:<font size="1"><b>#12.查询商品规格信息详情 </b></font><br>
+     *
+     * @param retailSkuVo retailSkuVo
+     * @author <a href="">meihongliang</a><br>
+     * @since 2022/3/8 11:27 <br>
+     * @return  AjaxResult <br>
+     */
+    AjaxResult retailSkuGet(RetailSkuVo retailSkuVo);
+
+    AjaxResult getSkuList();
+
+    /**
+     * title: <font size="1"><b> #13.商品新增接口</b></font><br>
+     * description:<font size="1"><b>#13.商品新增接口 </b></font><br>
+     *
+     * @param itemAddVo itemAddVo
+     * @author <a href="">meihongliang</a><br>
+     * @since 2022/3/8 14:24 <br>
+     * @return AjaxResult <br>
+     */
+    AjaxResult itemAdd(cn.lanca.vo.user.item.ItemAddVo itemAddVo);
+
+    /**
+     * title: <font size="1"><b> 发布商品库商品至门店</b></font><br>
+     * description:<font size="1"><b> 发布商品库商品至门店</b></font><br>
+     *
+     * @param spuReleaseParams spuReleaseParams
+     * @author <a href="">meihongliang</a><br>
+     * @since 2022/3/8 15:46 <br>
+     * @return  AjaxResult <br>
+     */
+    AjaxResult retailOfflineSpuRelease(YouzanRetailOpenOfflineSpuReleaseParams spuReleaseParams);
 }

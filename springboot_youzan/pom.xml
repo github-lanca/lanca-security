@@ -19,7 +19,7 @@
     <properties>
         <java.version>1.8</java.version>
         <youzan.sdk.core.version>1.0.25-RELEASE</youzan.sdk.core.version>
-        <youzan.sdk.gen.version>1.0.22.10000097202202181430-RELEASE</youzan.sdk.gen.version>
+        <youzan.sdk.gen.version>1.0.22.10000017202203081030-RELEASE</youzan.sdk.gen.version>
     </properties>
 
     <dependencies>
