@@ -1,4 +1,4 @@
-package cn.lanca.vo.user;
+package cn.lanca.vo.item;
 
 import lombok.Data;
 

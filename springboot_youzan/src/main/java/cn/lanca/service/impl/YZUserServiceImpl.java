@@ -3,12 +3,13 @@ package cn.lanca.service.impl;
 import cn.lanca.config.YouzanProperties;
 import cn.lanca.service.IYZUserService;
 import cn.lanca.vo.base.AjaxResult;
+import cn.lanca.vo.item.IncreasePointVo;
+import cn.lanca.vo.item.ItemAddVo;
+import cn.lanca.vo.item.ItemSearchVo;
+import cn.lanca.vo.item.RetailSkuVo;
 import cn.lanca.vo.user.CreateUserVo;
 import cn.lanca.vo.user.CustomerGetVo;
 import cn.lanca.vo.user.CustomerMemberVo;
-import cn.lanca.vo.user.IncreasePointVo;
-import cn.lanca.vo.user.ItemSearchVo;
-import cn.lanca.vo.user.RetailSkuVo;
 import com.youzan.cloud.open.sdk.common.exception.SDKException;
 import com.youzan.cloud.open.sdk.core.client.auth.Token;
 import com.youzan.cloud.open.sdk.core.client.core.YouZanClient;
@@ -352,7 +353,7 @@ public class YZUserServiceImpl implements IYZUserService {
      * @since 2022/3/8 14:24 <br>
      */
     @Override
-    public AjaxResult itemAdd(cn.lanca.vo.user.item.ItemAddVo itemAddVo) {
+    public AjaxResult itemAdd(ItemAddVo itemAddVo) {
         YouzanItemAdd youzanItemAdd = new YouzanItemAdd();
         //创建参数对象,并设置参数
         YouzanItemAddParams youzanItemAddParams = new YouzanItemAddParams();

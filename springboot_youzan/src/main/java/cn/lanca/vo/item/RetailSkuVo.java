@@ -1,4 +1,4 @@
-package cn.lanca.vo.user;
+package cn.lanca.vo.item;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;

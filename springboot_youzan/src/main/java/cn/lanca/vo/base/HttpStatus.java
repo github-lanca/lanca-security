@@ -1,4 +1,4 @@
-package cn.lanca.vo;
+package cn.lanca.vo.base;
 
 /**
  * 返回状态码

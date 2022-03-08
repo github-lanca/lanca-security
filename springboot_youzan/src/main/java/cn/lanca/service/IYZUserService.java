@@ -1,12 +1,13 @@
 package cn.lanca.service;
 
 import cn.lanca.vo.base.AjaxResult;
+import cn.lanca.vo.item.IncreasePointVo;
+import cn.lanca.vo.item.ItemAddVo;
+import cn.lanca.vo.item.ItemSearchVo;
+import cn.lanca.vo.item.RetailSkuVo;
 import cn.lanca.vo.user.CreateUserVo;
 import cn.lanca.vo.user.CustomerGetVo;
 import cn.lanca.vo.user.CustomerMemberVo;
-import cn.lanca.vo.user.IncreasePointVo;
-import cn.lanca.vo.user.ItemSearchVo;
-import cn.lanca.vo.user.RetailSkuVo;
 import com.youzan.cloud.open.sdk.gen.v3_0_0.model.YouzanRetailOpenOfflineSpuReleaseParams;
 
 import java.util.List;
@@ -112,7 +113,7 @@ public interface IYZUserService {
      * @since 2022/3/8 14:24 <br>
      * @return AjaxResult <br>
      */
-    AjaxResult itemAdd(cn.lanca.vo.user.item.ItemAddVo itemAddVo);
+    AjaxResult itemAdd(ItemAddVo itemAddVo);
 
     /**
      * title: <font size="1"><b> 发布商品库商品至门店</b></font><br>

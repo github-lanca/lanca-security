@@ -1,4 +1,4 @@
-package cn.lanca.vo.user;
+package cn.lanca.vo.item;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

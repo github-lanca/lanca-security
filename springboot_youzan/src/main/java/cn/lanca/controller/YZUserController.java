@@ -3,12 +3,13 @@ package cn.lanca.controller;
 import cn.lanca.service.IYZUserService;
 import cn.lanca.util.YouzanUtils;
 import cn.lanca.vo.base.AjaxResult;
+import cn.lanca.vo.item.IncreasePointVo;
+import cn.lanca.vo.item.ItemAddVo;
+import cn.lanca.vo.item.ItemSearchVo;
+import cn.lanca.vo.item.RetailSkuVo;
 import cn.lanca.vo.user.CreateUserVo;
 import cn.lanca.vo.user.CustomerGetVo;
 import cn.lanca.vo.user.CustomerMemberVo;
-import cn.lanca.vo.user.IncreasePointVo;
-import cn.lanca.vo.user.ItemSearchVo;
-import cn.lanca.vo.user.RetailSkuVo;
 import com.youzan.cloud.open.sdk.gen.v3_0_0.model.YouzanRetailOpenOfflineSpuReleaseParams;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -138,7 +139,7 @@ public class YZUserController {
     // #13.商品新增接口
     // https://doc.youzanyun.com/detail/API/0/1113
     @PostMapping("/yzUser/itemAdd")
-    public AjaxResult itemAdd(@RequestBody @Validated cn.lanca.vo.user.item.ItemAddVo itemAddVo){
+    public AjaxResult itemAdd(@RequestBody @Validated ItemAddVo itemAddVo){
         return iyzUserService.itemAdd(itemAddVo);
     }
 
