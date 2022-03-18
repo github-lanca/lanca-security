@@ -72,6 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register/**").anonymous()
                 .antMatchers("/login/**").anonymous()
                 .antMatchers("/loggggout/**").anonymous()
+                .antMatchers("/not/**").anonymous()
                 // 这里意思是其它所有接口需要认证才能访问
                 .anyRequest().authenticated()
                 // 指定认证错误处理器

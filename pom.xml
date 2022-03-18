@@ -71,6 +71,7 @@
         <module>esaypoi</module>
         <module>springboot_mpp</module>
         <module>springboot_youzan</module>
+        <module>springboot_test</module>
     </modules>
 
 </project>

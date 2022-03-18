@@ -79,4 +79,5 @@ public class CreateUserVo {
      */
     private String createDate;
 
+
 }
