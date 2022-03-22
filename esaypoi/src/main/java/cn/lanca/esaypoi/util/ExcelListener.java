@@ -29,7 +29,6 @@ public class ExcelListener<T> extends AnalysisEventListener<T> {
      */
     @Override
     public void invoke(T obj, AnalysisContext context) {
-        //System.out.println(new Gson().toJson(obj));
         objs.add(obj);
     }
 
