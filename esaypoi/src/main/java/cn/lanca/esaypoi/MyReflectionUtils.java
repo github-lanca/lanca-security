@@ -1,5 +1,6 @@
 package cn.lanca.esaypoi;
 
+import cn.lanca.esaypoi.anno.ExcelAno;
 import cn.lanca.esaypoi.dto.Person;
 
 import java.lang.reflect.Field;
@@ -28,7 +29,14 @@ public class MyReflectionUtils {
         for (Field declaredField : declaredFields) {
             declaredField.setAccessible(true);
             Object o = declaredField.get(person);
-             System.out.println(declaredField.getName()+"/"+declaredField.getType()+"/"+o.toString());
+            if(declaredField.isAnnotationPresent(ExcelAno.class)){
+                ExcelAno annotation = declaredField.getAnnotation(ExcelAno.class);
+                //System.out.println(annotation);
+                System.out.println(annotation.value());
+                System.out.println(annotation.otherVale());
+//                System.out.println("该字段所对应的类上有注解/"+declaredField.getName()+"/ExcelAno.class");
+            }
+//             System.out.println("字段名字:"+declaredField.getName()+"/字段类型:"+declaredField.getType()+"/对象该字段的值:"+o.toString());
         }
     }
 }

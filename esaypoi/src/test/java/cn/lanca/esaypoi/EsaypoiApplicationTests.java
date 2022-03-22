@@ -7,15 +7,11 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.util.StringUtils;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,19 +80,9 @@ class EsaypoiApplicationTests {
     }
 
     @Test
-    void newDateTime() {
-
-        System.out.println(StringUtils.isBlank(""));
-        Instant now = Instant.now();
-        System.out.println(now);
-
-        LocalDate now1 = LocalDate.now();
-        System.out.println(now1);
-
-        LocalTime now2 = LocalTime.now();
-        System.out.println(now2);
-        System.out.println(now2.getSecond());
-        System.out.println(now2.getNano());
-
+    public void easyExcel(){
+//        String fileName = TestFileUtil.getPath() + "demo" + File.separator + "demo.xlsx";
+//        // 这里 需要指定读用哪个class去读，然后读取第一个sheet 文件流会自动关闭
+//        EasyExcel.read(fileName, DemoData.class, new DemoDataListener()).sheet().doRead();
     }
 }

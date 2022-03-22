@@ -6,7 +6,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- *
  * @version 1.0.0<br>
  * @since 2022/3/18 15:09  <br>
  */
@@ -14,5 +13,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)//只允许在字段上添加该注解
 public @interface ExcelAno {
 
-    public String value() default "";
+    String value() default "";
+
+    String otherVale() default "";
 }

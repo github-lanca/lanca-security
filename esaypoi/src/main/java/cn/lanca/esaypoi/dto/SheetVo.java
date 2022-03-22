@@ -2,6 +2,7 @@ package cn.lanca.esaypoi.dto;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,12 +17,17 @@ import java.util.List;
  */
 @Data
 public class SheetVo<T> {
-
-    // 表名
+    // sheet名
     private String sheetName;
-    // 这个sheet对应的domain类
-    private T clazz;
+    // 列名/字段属性
+    private List<String> column = new ArrayList<>();
+    // clazz
+    public Class<T> clazz;
     // 具体数据
-    private List<T> list;
+    private List<T> list = new ArrayList<>();
+
+    public SheetVo(Class<T> clazz) throws ClassNotFoundException {
+        this.clazz = clazz;
+    }
 
 }

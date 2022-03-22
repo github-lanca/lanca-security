@@ -1,5 +1,6 @@
 package cn.lanca.esaypoi.dto;
 
+import cn.lanca.esaypoi.anno.ExcelAno;
 import lombok.Data;
 
 import java.util.Date;
@@ -16,8 +17,22 @@ import java.util.Date;
  */
 @Data
 public class Student {
+    @ExcelAno(value = "编号")
     private int no;
+    @ExcelAno(value = "名称")
     private String name;
+    @ExcelAno(value = "性别")
     private String sex;
+    @ExcelAno(value = "生日")
     private Date birthday;
+
+    public Student() {
+    }
+
+    public Student(int no, String name, String sex, Date birthday) {
+        this.no = no;
+        this.name = name;
+        this.sex = sex;
+        this.birthday = birthday;
+    }
 }

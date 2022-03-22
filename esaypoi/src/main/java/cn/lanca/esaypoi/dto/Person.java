@@ -11,13 +11,13 @@ import java.util.Date;
 @Data
 public class Person {
 
-    @ExcelAno(value = "姓名")
+    @ExcelAno(value = "姓名", otherVale = "qita")
     private String name;
 
-    @ExcelAno(value = "年龄")
+    @ExcelAno(value = "年龄",otherVale = "nianling")
     private int age;
 
-    @ExcelAno(value = "操作时间")
+    @ExcelAno(value = "操作时间",otherVale = "shijian")
     private Date time = new Date();
     private String timeStr;
 
