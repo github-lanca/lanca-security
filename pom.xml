@@ -72,6 +72,7 @@
         <module>springboot_mpp</module>
         <module>springboot_youzan</module>
         <module>springboot_test</module>
+        <module>springboot_schedule</module>
     </modules>
 
 </project>

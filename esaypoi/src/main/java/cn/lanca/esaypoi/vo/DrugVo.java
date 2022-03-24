@@ -14,7 +14,7 @@ import lombok.Data;
  * @since 2022/3/22 18:36  <br>
  */
 @Data
-public class DrugVo942 {
+public class DrugVo {
 
     /**
      *
@@ -99,38 +99,40 @@ public class DrugVo942 {
     /**
      *
      */
-    @ExcelProperty(value = "药品规格_表", index = 16)
+    @ExcelProperty(value = "药品规格_表少", index = 16)
     private String a16;
-    /**
-     *
-     */
-    @ExcelProperty(value = "价格", index = 17)
+    @ExcelProperty(value = "药品规格_库多", index = 17)
     private String a17;
-    /**
-     *
-     */
-    @ExcelProperty(value = "用法", index = 18)
+
+    @ExcelProperty(value = "价格", index = 18)
     private String a18;
-    /**
-     *
-     */
-    @ExcelProperty(value = "使用剂量", index = 19)
+
+    @ExcelProperty(value = "用法", index = 19)
     private String a19;
     /**
      *
      */
-    @ExcelProperty(value = "用量单位", index = 20)
+    @ExcelProperty(value = "使用剂量", index = 20)
     private String a20;
-    @ExcelProperty(value = "商品卖点", index = 21)
+    /**
+     *
+     */
+    @ExcelProperty(value = "用量单位", index = 21)
     private String a21;
-    @ExcelProperty(value = "注意事项", index = 22)
+    @ExcelProperty(value = "商品卖点", index = 22)
     private String a22;
-    @ExcelProperty(value = "不良反应", index = 23)
+    @ExcelProperty(value = "注意事项", index = 23)
     private String a23;
-    @ExcelProperty(value = "有效期", index = 24)
+    @ExcelProperty(value = "不良反应", index = 24)
     private String a24;
-    @ExcelProperty(value = "库存", index = 25)
+    @ExcelProperty(value = "有效期", index = 25)
     private String a25;
+    @ExcelProperty(value = "库存", index = 26)
+    private String a26;
+    @ExcelProperty(value = "图片名称", index = 27)
+    private String a27;
+
     private String key2;
+    private String key3;
 }
 

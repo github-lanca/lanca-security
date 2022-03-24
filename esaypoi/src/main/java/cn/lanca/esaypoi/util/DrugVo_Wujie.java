@@ -10,7 +10,7 @@ import lombok.Data;
  * @version: <br>
  */
 @Data
-public class DrugVo {
+public class DrugVo_Wujie {
 
     @ExcelProperty(value = "hos_drug_code(药品编码)", index = 0)
     private String hos_drug_code;

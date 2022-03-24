@@ -5,3 +5,13 @@ spring:
     multipart:
       max-request-size: 50MB
       max-file-size: 50MB
+
+logging:
+  level:
+    com:
+      alibaba:
+        excel:
+          analysis:
+            v03:
+              handlers:
+                FormulaRecordHandler: ERROR
