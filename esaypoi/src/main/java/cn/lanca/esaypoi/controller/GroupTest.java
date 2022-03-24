@@ -13,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -42,16 +43,28 @@ public class GroupTest {
         list942.forEach((k, v) -> {
             listMap36070.forEach((m, n) -> {
                 if (k.equals(m)) {
+//                    if (v.size() > 1) {
+//                        for (int i = 1; i < v.size(); i++) {
+//                            DrugVo942 drugVo942 = v.get(i);
+//                            DrugVo36070 drugVo36070 = n.get(0);
+//                            DrugVo drugVo = changeeeeee(drugVo36070, drugVo942);
+//                            re.add(drugVo);
+//                        }
+//                    }
+//                    System.out.println("v|"+v.size());
                     for (int i = 0; i < v.size(); i++) {
                         DrugVo942 drugVo942 = v.get(i);
-                        DrugVo36070 drugVo36070 = n.get(0);
-                        DrugVo drugVo = changeeeeee(drugVo36070, drugVo942);
-                        re.add(drugVo);
+                        for (int i1 = 0; i1 < n.size(); i1++) {
+                            DrugVo36070 drugVo36070 = n.get(i1);
+                            DrugVo drugVo = changeeeeee(drugVo36070, drugVo942);
+                            re.add(drugVo);
+                        }
                     }
                 }
             });
         });
         List<DrugVo> zzzzzzzy = re.stream().sorted(Comparator.comparing(DrugVo::getA15)).collect(Collectors.toList());
+
         for (int m = 0; m < zzzzzzzy.size(); m++) {
             DrugVo drugVo = zzzzzzzy.get(m);
             drugVo.setA0((m + 1) + "");
@@ -80,8 +93,31 @@ public class GroupTest {
                 drugVo.setA27(substring);
             }
         }
-        File file2 = new File("/Users/meihongliang/Downloads/brother/另一个.xlsx");
-        EasyExcel.write(file2, DrugVo.class).sheet("sheet_885").doWrite(zzzzzzzy);
+        System.out.println("-----");
+        System.out.println(zzzzzzzy.size());
+
+        List<DrugVo> keyy1 = new ArrayList<>();
+        List<DrugVo> keyy2 = new ArrayList<>();
+
+        for (int i = 0; i < zzzzzzzy.size(); i++) {
+            DrugVo drugVo = zzzzzzzy.get(i);
+            String a16 = drugVo.getA16();
+            String a17 = drugVo.getA17();
+            if (a16.equals(a17)) {
+                System.out.println(a16);
+                keyy1.add(drugVo);
+            } else {
+                keyy2.add(drugVo);
+            }
+        }
+        System.out.println(zzzzzzzy.size());
+        System.out.println(keyy1.size());
+        System.out.println(keyy2.size());
+        File file1 = new File("/Users/meihongliang/Downloads/thu/z444444_key1.xlsx");
+        EasyExcel.write(file1, DrugVo.class).sheet("z444444_key1").doWrite(keyy1);
+
+        File file2 = new File("/Users/meihongliang/Downloads/thu/z444444_key2.xlsx");
+        EasyExcel.write(file2, DrugVo.class).sheet("z444444_key2").doWrite(keyy2);
 
 //        List<DrugVo942> aaa = new ArrayList<>();
 //        list942.forEach((k, v) -> {
@@ -90,78 +126,76 @@ public class GroupTest {
 //        File file2 = new File("/Users/meihongliang/Downloads/zzzz/aaa.xlsx");
 //        EasyExcel.write(file2, DrugVo942.class).sheet("sheet_377").doWrite(aaa);
 
-        /**
 
-         List<DrugVo> re = new ArrayList<>();
-         List<DrugVo942> fu = new ArrayList<>();
-         list942.forEach((k, v) -> {
-         listMap36070.forEach((m, n) -> {
-         if (m.equals(k)) {
-         fu.add(v.get(0));
-         //System.out.println(k);
-         for (DrugVo942 drugVo942 : v) {
-         for (DrugVo36070 drugVo36070 : n) {
-         DrugVo drugVo = changeeeeee(drugVo36070, drugVo942);
-         drugVo.setKey2(drugVo.getA15() + "_" + drugVo.getA16());
-         drugVo.setKey3(drugVo.getA15() + "_" + drugVo.getA16() + "_" + drugVo.getA17());
-         re.add(drugVo);
-         }
-         }
-         }
-         });
-         });
-         System.out.println(864 - 813);
-         System.out.println("re.size()");
-         System.out.println("re.size()" + re.size());
-         Map<String, List<DrugVo>> collect = re.stream().collect(Collectors.groupingBy(DrugVo::getKey2));
-         System.out.println(collect.size());
-         List<DrugVo> zzzzzzzz = new ArrayList<>();
-         collect.forEach((k, v) -> {
-         zzzzzzzz.add(v.get(0));
-         });
-         List<DrugVo> zzzzzzzy = zzzzzzzz.stream().sorted(Comparator.comparing(DrugVo::getA15)).collect(Collectors.toList());
+        //List<DrugVo> re = new ArrayList<>();
+        List<DrugVo942> fu = new ArrayList<>();
+        list942.forEach((k, v) -> {
+            listMap36070.forEach((m, n) -> {
+                if (m.equals(k)) {
+                    fu.add(v.get(0));
+                    //System.out.println(k);
+                    for (DrugVo942 drugVo942 : v) {
+                        for (DrugVo36070 drugVo36070 : n) {
+                            DrugVo drugVo = changeeeeee(drugVo36070, drugVo942);
+                            drugVo.setKey2(drugVo.getA15() + "_" + drugVo.getA16());
+                            drugVo.setKey3(drugVo.getA15() + "_" + drugVo.getA16() + "_" + drugVo.getA17());
+                            re.add(drugVo);
+                        }
+                    }
+                }
+            });
+        });
+        System.out.println(864 - 813);
+        System.out.println("re.size()");
+        System.out.println("re.size()" + re.size());
+        Map<String, List<DrugVo>> collect = re.stream().collect(Collectors.groupingBy(DrugVo::getKey2));
+        System.out.println(collect.size());
+        List<DrugVo> zzzzzzzz = new ArrayList<>();
+        collect.forEach((k, v) -> {
+            zzzzzzzz.add(v.get(0));
+        });
+        //List<DrugVo> zzzzzzzy = zzzzzzzz.stream().sorted(Comparator.comparing(DrugVo::getA15)).collect(Collectors.toList());
 
-         //        File file2 = new File("/Users/meihongliang/Downloads/zzzz/zzzzzzzzz22.xlsx");
-         //        EasyExcel.write(file2, DrugVo.class).sheet("sheet_377").doWrite(zzzzzzzy);
+        //        File file2 = new File("/Users/meihongliang/Downloads/zzzz/zzzzzzzzz22.xlsx");
+        //        EasyExcel.write(file2, DrugVo.class).sheet("sheet_377").doWrite(zzzzzzzy);
 
 
-         for (DrugVo942 drugVo942 : drugVo942s) {
-         drugVo942.setKey2(drugVo942.getA15() + "_" + drugVo942.getA16());
-         }
-         System.out.println("---456---");
-         System.out.println(drugVo942s.size());
-         System.out.println(zzzzzzzy.size());
-         Iterator<DrugVo942> iterator = drugVo942s.iterator();
-         while (iterator.hasNext()) {
-         DrugVo942 next = iterator.next();
-         Iterator<DrugVo942> iterator1 = fu.iterator();
-         while (iterator1.hasNext()) {
-         DrugVo942 next1 = iterator1.next();
-         if (next.getA15().equals(next1.getA15())) {
-         iterator.remove();
-         }
-         }
-         }
+        for (DrugVo942 drugVo942 : drugVo942s) {
+            drugVo942.setKey2(drugVo942.getA15() + "_" + drugVo942.getA16());
+        }
+        System.out.println("---456---");
+        System.out.println(drugVo942s.size());
+        System.out.println(zzzzzzzy.size());
+        Iterator<DrugVo942> iterator = drugVo942s.iterator();
+        while (iterator.hasNext()) {
+            DrugVo942 next = iterator.next();
+            Iterator<DrugVo942> iterator1 = fu.iterator();
+            while (iterator1.hasNext()) {
+                DrugVo942 next1 = iterator1.next();
+                if (next.getA15().equals(next1.getA15())) {
+                    iterator.remove();
+                }
+            }
+        }
 
-         //        for (DrugVo942 drugVo942 : drugVo942s) {
-         //            for (DrugVo drugVo : zzzzzzzy) {
-         //                if (drugVo942.getKey2().equals(drugVo.getKey2())) {
-         //                    drugVo942s.remove(drugVo942);
-         //                }
-         //            }
-         //        }
-         System.out.println("--123---");
-         System.out.println(drugVo942s.size());
-         List<DrugVo942> zzzzzzzyz = drugVo942s.stream().sorted(Comparator.comparing(DrugVo942::getA15)).collect(Collectors.toList());
-         for (int i = 0; i < zzzzzzzyz.size(); i++) {
-         DrugVo942 drugVo942 = zzzzzzzyz.get(i);
-         drugVo942.setA0((i + 1) + "");
-         }
+        //        for (DrugVo942 drugVo942 : drugVo942s) {
+        //            for (DrugVo drugVo : zzzzzzzy) {
+        //                if (drugVo942.getKey2().equals(drugVo.getKey2())) {
+        //                    drugVo942s.remove(drugVo942);
+        //                }
+        //            }
+        //        }
+        System.out.println("--123---");
+        System.out.println(drugVo942s.size());
+        List<DrugVo942> zzzzzzzyz = drugVo942s.stream().sorted(Comparator.comparing(DrugVo942::getA15)).collect(Collectors.toList());
+        for (int i = 0; i < zzzzzzzyz.size(); i++) {
+            DrugVo942 drugVo942 = zzzzzzzyz.get(i);
+            drugVo942.setA0((i + 1) + "");
+        }
 
-         File file23333 = new File("/Users/meihongliang/Downloads/brother/未在大数据中匹配上批准文号.xlsx");
-         EasyExcel.write(file23333, DrugVo942.class).sheet("sheet_377").doWrite(zzzzzzzyz);
+        File file23333 = new File("/Users/meihongliang/Downloads/brother/未在大数据中匹配上批准文号.xlsx");
+        EasyExcel.write(file23333, DrugVo942.class).sheet("sheet_377").doWrite(zzzzzzzyz);
 
-         */
     }
 
 
@@ -198,7 +232,24 @@ public class GroupTest {
         drugVo.setA5(drugVo36070.getA18());
         // 产品剂型
         drugVo.setA13(drugVo36070.getA6());
-        drugVo.setA17(drugVo36070.getA5());
+        String a16 = drugVo.getA16();
+        String y = a16.replace("*", "x")
+                .replace("片/板", "片")
+                .replace("片/盒", "板")
+                .replace("贴/盒", "贴")
+                .replace("瓶/盒", "瓶")
+                .replace("袋/盒", "袋")
+                .replace("板/盒", "板");
+        drugVo.setA16(y);
+        String a5 = drugVo36070.getA5();
+        String x = a5.replace("*", "x")
+                .replace("片/板", "片")
+                .replace("片/盒", "板")
+                .replace("贴/盒", "贴")
+                .replace("瓶/盒", "瓶")
+                .replace("袋/盒", "袋")
+                .replace("板/盒", "板");
+        drugVo.setA17(x);
         // 价格
         drugVo.setA18(drugVo942.getA17());
         drugVo.setA19(drugVo36070.getA15());
