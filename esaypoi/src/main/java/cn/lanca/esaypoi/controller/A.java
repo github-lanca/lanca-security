@@ -28,7 +28,7 @@ import java.util.List;
  */
 public class A {
     public static void main(String[] args) throws FileNotFoundException {
-        String baseDir = "/Users/meihongliang/Downloads/thu/0324/";
+        String baseDir = "/Users/meihongliang/Downloads/thu/17/";
         List<ExportVo> exportVos = get();
         List<ExportVo> result = new ArrayList<>();
         for (int i = 0; i < exportVos.size(); i++) {
@@ -39,8 +39,12 @@ public class A {
                 exportVo.setA1(i+"");
                 String s1 = exportVo.getA30() + "_" + exportVo.getA33() + "_" + exportVo.getA35();
                 // images
-                String images = s1.replace("*", "x").replace(" ", "").replace("/", "x");
-                String imageList = exportVo.getA45();
+                String images = s1.replace("*", "x")
+                        .replace(" ", "")
+                        .replace(":", "x")
+                        .replace("", "")
+                        .replace("/", "x");
+                String imageList = exportVo.getA44();
                 if (StringUtils.hasLength(imageList)) {
                     imageList = imageList.replace("*", "x").replace(" ", "");
                     if (StringUtils.hasLength(imageList)) {
@@ -56,7 +60,7 @@ public class A {
 //                    System.out.println(urlPath);
                             String url = imageUrl[m];
                             try {
-//                                downloadPicture(url, urlPath);
+                                downloadPicture(url, urlPath);
                             } catch (Exception e) {
 //                        System.out.println(url);
                                 e.printStackTrace();
@@ -65,7 +69,7 @@ public class A {
                             sb.append(urlName).append(";");
                         }
                         String substring = sb.substring(0, sb.lastIndexOf(";"));
-//                        System.out.println(substring);
+                        System.out.println(substring);
                         exportVo.setA7(substring);
                         exportVo.setA6("");
                         exportVo.setA8("");
@@ -100,13 +104,14 @@ public class A {
 
         //
         System.out.println("==" + result.size());
-        File file2 = new File("/Users/meihongliang/Downloads/导入失败表289_new.xlsx");
-        EasyExcel.write(file2, ExportVo.class).sheet("289_new").doWrite(result);
+        File file2 = new File("/Users/meihongliang/Downloads/院外-17_new.xlsx");
+        EasyExcel.write(file2, ExportVo.class).sheet("17_new").doWrite(result);
     }
 
     private static List<ExportVo> get() throws FileNotFoundException {
         ExcelListener<ExportVo> userListener55555 = new ExcelListener<>();
-        String fileName36070_555 = "/Users/meihongliang/Downloads/导入失败表289.xlsx";
+//        String fileName36070_555 = "/Users/meihongliang/Downloads/导入失败表289.xlsx";
+        String fileName36070_555 = "/Users/meihongliang/Downloads/院外-17.xlsx";
         EasyExcel.read(new FileInputStream(fileName36070_555), ExportVo.class, userListener55555).sheet().doRead();
         List<ExportVo> objs = userListener55555.getObjs();
         return objs;
