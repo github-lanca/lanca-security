@@ -73,6 +73,7 @@
         <module>springboot_youzan</module>
         <module>springboot_test</module>
         <module>springboot_schedule</module>
+        <module>common</module>
     </modules>
 
 </project>
