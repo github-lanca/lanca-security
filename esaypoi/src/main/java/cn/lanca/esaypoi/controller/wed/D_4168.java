@@ -30,7 +30,8 @@ public class D_4168 {
 
 
     /**
-     * key3去重
+     * todo 这个执行一次，生成多个文件
+     * 在未完全匹配的759中去除813中重复的批准文号
      *
      * @param args args
      * @throws FileNotFoundException
@@ -163,15 +164,16 @@ public class D_4168 {
         });
         System.out.println("完全匹配:" + result.size());
         System.out.println("完全匹配_else:" + result_else.size());
+//        "数据库'药品规格'参数包含库表'药品规格'参数"
 
         List<CommonVo> collect = result.stream().sorted(Comparator.comparing(CommonVo::getA10)).collect(Collectors.toList());
         // #3生成图片文件，excel文件 6041
-        File file2 = new File("/Users/meihongliang/Downloads/建设路-1327-没有/84124_yy/1327_6041_key3_4168_" + collect.size() + ".xlsx");
+        File file2 = new File("/Users/meihongliang/Downloads/建设路-1327-没有/84124_end/A_4168_模糊contains相等_" + collect.size() + ".xlsx");
         EasyExcel.write(file2, CommonVo.class).sheet(collect.size() + "").doWrite(collect);
 
         List<CommonVo> collect_result_else = result_else.stream().sorted(Comparator.comparing(CommonVo::getA10)).collect(Collectors.toList());
         // #3生成图片文件，excel文件 6041
-        File file2_collect_result_else = new File("/Users/meihongliang/Downloads/建设路-1327-没有/84124_yy/1327_6041_key3_4168_" + collect_result_else.size() + ".xlsx");
+        File file2_collect_result_else = new File("/Users/meihongliang/Downloads/建设路-1327-没有/84124_end/A_4168_模糊contains不等_" + collect_result_else.size() + ".xlsx");
         EasyExcel.write(file2_collect_result_else, CommonVo.class).sheet(collect_result_else.size() + "").doWrite(collect_result_else);
 
 
@@ -189,12 +191,12 @@ public class D_4168 {
 
         List<CommonVo> ac12 = resultxxx.stream().sorted(Comparator.comparing(CommonVo::getA10)).collect(Collectors.toList());
         // #3生成图片文件，excel文件 6041
-        File fileac12 = new File("/Users/meihongliang/Downloads/建设路-1327-没有/84124_yy/3098_中完全匹配_G_" + ac12.size() + ".xlsx");
+        File fileac12 = new File("/Users/meihongliang/Downloads/建设路-1327-没有/84124_end/B_" + result.size() + "_中完全equals匹配_" + ac12.size() + ".xlsx");
         EasyExcel.write(fileac12, CommonVo.class).sheet(ac12.size() + "").doWrite(ac12);
 
         List<CommonVo> ac23 = resultyyy.stream().sorted(Comparator.comparing(CommonVo::getA10)).collect(Collectors.toList());
         // #3生成图片文件，excel文件 6041
-        File fileac23 = new File("/Users/meihongliang/Downloads/建设路-1327-没有/84124_yy/3098_中未完全匹配_G_" + ac23.size() + ".xlsx");
+        File fileac23 = new File("/Users/meihongliang/Downloads/建设路-1327-没有/84124_end/B_" + result.size() + "_中未完全equals匹配_" + ac23.size() + ".xlsx");
         EasyExcel.write(fileac23, CommonVo.class).sheet(ac23.size() + "").doWrite(ac23);
 
 
@@ -206,7 +208,7 @@ public class D_4168 {
         });
         List<CommonVo> ac12_pppp_list = pppp_list.stream().sorted(Comparator.comparing(CommonVo::getA10)).collect(Collectors.toList());
         // #3生成图片文件，excel文件 6041
-        File fileac12_ac12_pppp_list = new File("/Users/meihongliang/Downloads/建设路-1327-没有/84124_yy/3098_中完全匹配_G_" + ac12.size() + "_" + ac12_pppp_list.size() + ".xlsx");
+        File fileac12_ac12_pppp_list = new File("/Users/meihongliang/Downloads/建设路-1327-没有/84124_end/C_" + result.size() + "_中完全equals匹配_" + ac12.size() + "_" + ac12_pppp_list.size() + ".xlsx");
         EasyExcel.write(fileac12_ac12_pppp_list, CommonVo.class).sheet(ac12_pppp_list.size() + "").doWrite(ac12_pppp_list);
 
 
@@ -217,7 +219,7 @@ public class D_4168 {
         });
         List<CommonVo> ac23_2 = pppp_list_2.stream().sorted(Comparator.comparing(CommonVo::getA10)).collect(Collectors.toList());
         // #3生成图片文件，excel文件 6041
-        File fileac23_2 = new File("/Users/meihongliang/Downloads/建设路-1327-没有/84124_yy/3098_中未完全匹配_G_" + ac23.size() + "_" + ac23_2.size() + ".xlsx");
+        File fileac23_2 = new File("/Users/meihongliang/Downloads/建设路-1327-没有/84124_end/C_" + result.size() + "_中未完全equals匹配_" + ac23.size() + "_" + ac23_2.size() + ".xlsx");
         EasyExcel.write(fileac23_2, CommonVo.class).sheet(ac23_2.size() + "").doWrite(ac23_2);
 
 
@@ -251,7 +253,7 @@ public class D_4168 {
 
         List<CommonVo> commonVos_759_sort = ac23_2.stream().sorted(Comparator.comparing(CommonVo::getA10)).collect(Collectors.toList());
         // #3生成图片文件，excel文件 6041
-        File file759_sort = new File("/Users/meihongliang/Downloads/建设路-1327-没有/84124_yy/未完全匹配的" + size + "条数据去除完全匹配的" + size1 + "条中存在'批准文号_药品规格'后剩余需要手动匹配的数据_" + commonVos_759_sort.size() + ".xlsx");
+        File file759_sort = new File("/Users/meihongliang/Downloads/建设路-1327-没有/84124_end/D_未完全匹配的" + size + "条数据去除完全匹配的" + size1 + "条中存在'批准文号_药品规格'后剩余需要手动匹配的数据_" + commonVos_759_sort.size() + ".xlsx");
         // 国药准字Z53020685_0.4g*70粒
         EasyExcel.write(file759_sort, CommonVo.class).sheet(commonVos_759_sort.size() + "").doWrite(commonVos_759_sort);
 
