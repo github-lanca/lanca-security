@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lanca.v1.dao.ShAreaDao">
+    <resultMap type="cn.lanca.v1.entity.ShArea" id="ShAreaMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="pid" column="pid" jdbcType="INTEGER"/>
+        <result property="shortName" column="short_name" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="mergerName" column="merger_name" jdbcType="VARCHAR"/>
+        <result property="level" column="level" jdbcType="INTEGER"/>
+        <result property="pinyin" column="pinyin" jdbcType="VARCHAR"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
+        <result property="zipCode" column="zip_code" jdbcType="VARCHAR"/>
+        <result property="first" column="first" jdbcType="VARCHAR"/>
+        <result property="lng" column="lng" jdbcType="VARCHAR"/>
+        <result property="lat" column="lat" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ShAreaMap">
+        select id,
+               pid,
+               short_name,
+               name,
+               merger_name,
+               level,
+               pinyin,
+               code,
+               zip_code,
+               first,
+               lng,
+               lat
+        from sh_area
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ShAreaMap">
+        select
+        id, pid, short_name, name, merger_name, level, pinyin, code, zip_code, first, lng, lat
+        from sh_area
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="pid != null">
+                and pid = #{pid}
+            </if>
+            <if test="shortName != null and shortName != ''">
+                and short_name = #{shortName}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="mergerName != null and mergerName != ''">
+                and merger_name = #{mergerName}
+            </if>
+            <if test="level != null">
+                and level = #{level}
+            </if>
+            <if test="pinyin != null and pinyin != ''">
+                and pinyin = #{pinyin}
+            </if>
+            <if test="code != null and code != ''">
+                and code = #{code}
+            </if>
+            <if test="zipCode != null and zipCode != ''">
+                and zip_code = #{zipCode}
+            </if>
+            <if test="first != null and first != ''">
+                and first = #{first}
+            </if>
+            <if test="lng != null and lng != ''">
+                and lng = #{lng}
+            </if>
+            <if test="lat != null and lat != ''">
+                and lat = #{lat}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from sh_area
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="pid != null">
+                and pid = #{pid}
+            </if>
+            <if test="shortName != null and shortName != ''">
+                and short_name = #{shortName}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="mergerName != null and mergerName != ''">
+                and merger_name = #{mergerName}
+            </if>
+            <if test="level != null">
+                and level = #{level}
+            </if>
+            <if test="pinyin != null and pinyin != ''">
+                and pinyin = #{pinyin}
+            </if>
+            <if test="code != null and code != ''">
+                and code = #{code}
+            </if>
+            <if test="zipCode != null and zipCode != ''">
+                and zip_code = #{zipCode}
+            </if>
+            <if test="first != null and first != ''">
+                and first = #{first}
+            </if>
+            <if test="lng != null and lng != ''">
+                and lng = #{lng}
+            </if>
+            <if test="lat != null and lat != ''">
+                and lat = #{lat}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into sh_area(pid, short_name, name, merger_name, level, pinyin, code, zip_code, first, lng, lat)
+        values (#{pid}, #{shortName}, #{name}, #{mergerName}, #{level}, #{pinyin}, #{code}, #{zipCode}, #{first},
+                #{lng}, #{lat})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into sh_area(pid, short_name, name, merger_name, level, pinyin, code, zip_code, first, lng, lat)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.pid}, #{entity.shortName}, #{entity.name}, #{entity.mergerName}, #{entity.level},
+            #{entity.pinyin}, #{entity.code}, #{entity.zipCode}, #{entity.first}, #{entity.lng}, #{entity.lat})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into sh_area(pid, short_name, name, merger_name, level, pinyin, code, zip_code, first, lng, lat)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.pid}, #{entity.shortName}, #{entity.name}, #{entity.mergerName}, #{entity.level},
+            #{entity.pinyin}, #{entity.code}, #{entity.zipCode}, #{entity.first}, #{entity.lng}, #{entity.lat})
+        </foreach>
+        on duplicate key update
+        pid = values(pid),
+        short_name = values(short_name),
+        name = values(name),
+        merger_name = values(merger_name),
+        level = values(level),
+        pinyin = values(pinyin),
+        code = values(code),
+        zip_code = values(zip_code),
+        first = values(first),
+        lng = values(lng),
+        lat = values(lat)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update sh_area
+        <set>
+            <if test="pid != null">
+                pid = #{pid},
+            </if>
+            <if test="shortName != null and shortName != ''">
+                short_name = #{shortName},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="mergerName != null and mergerName != ''">
+                merger_name = #{mergerName},
+            </if>
+            <if test="level != null">
+                level = #{level},
+            </if>
+            <if test="pinyin != null and pinyin != ''">
+                pinyin = #{pinyin},
+            </if>
+            <if test="code != null and code != ''">
+                code = #{code},
+            </if>
+            <if test="zipCode != null and zipCode != ''">
+                zip_code = #{zipCode},
+            </if>
+            <if test="first != null and first != ''">
+                first = #{first},
+            </if>
+            <if test="lng != null and lng != ''">
+                lng = #{lng},
+            </if>
+            <if test="lat != null and lat != ''">
+                lat = #{lat},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from sh_area
+        where id = #{id}
+    </delete>
+</mapper>
+

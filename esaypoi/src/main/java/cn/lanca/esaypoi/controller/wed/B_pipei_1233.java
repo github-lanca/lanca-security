@@ -45,20 +45,30 @@ public class B_pipei_1233 {
         Map<String, List<AandBVo>> vvvv = aandBVos.stream().collect(Collectors.groupingBy(AandBVo::getA3));
 
         List<AandBVo> ccc = new ArrayList<>();
+        List<CommonVo> xxxxyyyy = new ArrayList<>();
+
         vvvv.forEach((k, v) -> {
             aaaa.forEach((m, n) -> {
                 if (k.equals(m)) {
-                    ccc.addAll(v);
+                    AandBVo aandBVo = v.get(0);
+                    n.forEach(xx -> {
+                        if (aandBVo.getA4().equals(xx.getA5())) {
+                            System.out.println(aandBVo.getA4() + "_|_" + xx.getA5());
+                            xx.setA25(aandBVo.getA0());
+                            xx.setA26(aandBVo.getA1());
+                            xxxxyyyy.add(xx);
+                        }
+                    });
                 }
             });
         });
-        System.out.println("_" + ccc.size());
+        System.out.println("_" + xxxxyyyy.size());
 
 
-        List<AandBVo> collect = ccc.stream().sorted(Comparator.comparing(AandBVo::getA3)).collect(Collectors.toList());
+        List<CommonVo> collect = xxxxyyyy.stream().sorted(Comparator.comparing(CommonVo::getA10)).collect(Collectors.toList());
         // #3生成图片文件，excel文件
-        File file2 = new File("/Users/meihongliang/Downloads/建设路-1327-没有/84124/1327匹配数据_" + collect.size() + ".xlsx");
-         EasyExcel.write(file2, AandBVo.class).sheet(collect.size() + "").doWrite(collect);
+        File file2 = new File("/Users/meihongliang/Downloads/建设路-1327-没有/84124/C_0328_完全匹配的_" + collect.size() + ".xlsx");
+         EasyExcel.write(file2, CommonVo.class).sheet(collect.size() + "").doWrite(collect);
 
 
     }

@@ -1,21 +1,25 @@
 package cn.lanca.v1.controller;
 
-
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import cn.lanca.v1.entity.ShArea;
 import cn.lanca.v1.service.ShAreaService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.io.Serializable;
-import java.util.List;
 
 /**
- * project name:<font size="1"><b>小芄健康数据运营平台</b></font><br>(ShArea)表控制层
+ * (ShArea)表控制层
  *
  * @author makejava
- * @since 2022-03-25 11:40:20
+ * @since 2022-03-28 10:53:36
  */
 @RestController
 @RequestMapping("shArea")
@@ -27,15 +31,17 @@ public class ShAreaController {
     private ShAreaService shAreaService;
 
     /**
-     * 分页查询所有数据
+     * 分页查询
      *
-     * @param page   分页对象
-     * @param shArea 查询实体
-     * @return 所有数据
+     * @param shArea      筛选条件
+     * @param pageRequest 分页对象
+     * @return 查询结果
      */
     @GetMapping
-    public R selectAll(Page<ShArea> page, ShArea shArea) {
-        return success(this.shAreaService.page(page, new QueryWrapper<>(shArea)));
+    public ResponseEntity<Page<ShArea>> queryByPage(ShArea shArea, PageRequest of) {
+        // pageRequest.withSort(Sort.Direction.DESC, "id");
+//        PageRequest of = PageRequest.of(page, size);
+        return ResponseEntity.ok(this.shAreaService.queryByPage(shArea, of));
     }
 
     /**
@@ -45,41 +51,43 @@ public class ShAreaController {
      * @return 单条数据
      */
     @GetMapping("{id}")
-    public R selectOne(@PathVariable Serializable id) {
-        return success(this.shAreaService.getById(id));
+    public ResponseEntity<ShArea> queryById(@PathVariable("id") Integer id) {
+        ShArea shArea = this.shAreaService.queryById(id);
+        return ResponseEntity.ok(shArea);
     }
 
     /**
      * 新增数据
      *
-     * @param shArea 实体对象
+     * @param shArea 实体
      * @return 新增结果
      */
     @PostMapping
-    public R insert(@RequestBody ShArea shArea) {
-        return success(this.shAreaService.save(shArea));
+    public ResponseEntity<ShArea> add(ShArea shArea) {
+        return ResponseEntity.ok(this.shAreaService.insert(shArea));
     }
 
     /**
-     * 修改数据
+     * 编辑数据
      *
-     * @param shArea 实体对象
-     * @return 修改结果
+     * @param shArea 实体
+     * @return 编辑结果
      */
     @PutMapping
-    public R update(@RequestBody ShArea shArea) {
-        return success(this.shAreaService.updateById(shArea));
+    public ResponseEntity<ShArea> edit(ShArea shArea) {
+        return ResponseEntity.ok(this.shAreaService.update(shArea));
     }
 
     /**
      * 删除数据
      *
-     * @param idList 主键结合
-     * @return 删除结果
+     * @param id 主键
+     * @return 删除是否成功
      */
     @DeleteMapping
-    public R delete(@RequestParam("idList") List<Long> idList) {
-        return success(this.shAreaService.removeByIds(idList));
+    public ResponseEntity<Boolean> deleteById(Integer id) {
+        return ResponseEntity.ok(this.shAreaService.deleteById(id));
     }
+
 }
 
