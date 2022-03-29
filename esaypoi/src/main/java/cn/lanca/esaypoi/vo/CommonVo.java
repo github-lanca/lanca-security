@@ -68,9 +68,11 @@ public class CommonVo {
     @ExcelProperty(value = "药品规格_A_库原始规格", index = 22)
     private String a22 = "";
 
-    @ExcelProperty(value = "药品规格_B_表模糊数据", index = 23)
+//    @ExcelProperty(value = "药品规格_B_表模糊数据", index = 23)
+    @ExcelProperty(value = "序列", index = 23)
     private String a23 = "";
-    @ExcelProperty(value = "药品规格_B_库模糊数据", index = 24)
+//    @ExcelProperty(value = "药品规格_B_库模糊数据", index = 24)
+    @ExcelProperty(value = "药品ID", index = 24)
     private String a24 = "";
 
     @ExcelProperty(value = "序列", index = 25)
@@ -80,7 +82,7 @@ public class CommonVo {
 
     @ExcelProperty(value = "", index = 27)
     private String key = "";
-    @ExcelProperty(value = "", index = 28)
+    @ExcelProperty(value = "图片名称", index = 28)
     private String key2 = "";
 
 }

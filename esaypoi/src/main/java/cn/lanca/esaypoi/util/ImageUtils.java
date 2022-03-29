@@ -24,7 +24,7 @@ public class ImageUtils {
      * @param urlList 图片网络地址 www.xxxxxxx.xxxxx.jpg
      * @param path    图片存在系统的那个位置 图片名称是什么 baseDir/xxxx_1.jpg
      */
-    private static void downloadPicture(String urlList, String path) {
+    public static void downloadPicture(String urlList, String path) {
         URL url = null;
         try {
             url = new URL(urlList);

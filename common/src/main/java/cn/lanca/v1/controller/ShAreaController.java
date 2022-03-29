@@ -31,10 +31,23 @@ public class ShAreaController {
     private ShAreaService shAreaService;
 
     /**
+     *      <p>我是p</p>
+     *      <pre>我是pre</pre>
+     *
+     * @param a a
+     * @param b a
+     * @return
+     */
+    public ResponseEntity<String> xx(String a, String b) {
+
+        return ResponseEntity.ok("");
+    }
+
+    /**
      * 分页查询
      *
-     * @param shArea      筛选条件
-     * @param pageRequest 分页对象
+     * @param shArea 筛选条件
+     * @param of     of
      * @return 查询结果
      */
     @GetMapping
