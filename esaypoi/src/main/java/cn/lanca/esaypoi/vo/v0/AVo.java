@@ -1,4 +1,4 @@
-package cn.lanca.esaypoi.vo;
+package cn.lanca.esaypoi.vo.v0;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;
@@ -14,8 +14,8 @@ import lombok.Data;
  * @since 2022/3/25 14:20  <br>
  */
 @Data
-public class BVo {
-    @ExcelProperty(value = "序号", index = 0)
+public class AVo {
+    @ExcelProperty(value = "分类", index = 0)
     private String a0 = "";
     @ExcelProperty(value = "商品品牌", index = 1)
     private String a1 = "";
@@ -55,11 +55,10 @@ public class BVo {
     private String a17 = "";
     @ExcelProperty(value = "产品图片", index = 18)
     private String a18 = "";
-    @ExcelProperty(value = "对应商品编码", index = 19)
+
+    //-----
+    @ExcelProperty(value = "序列", index = 19)
     private String a19 = "";
-
-
-    //----
     @ExcelProperty(value = "序列", index = 20)
     private String a20 = "";
 

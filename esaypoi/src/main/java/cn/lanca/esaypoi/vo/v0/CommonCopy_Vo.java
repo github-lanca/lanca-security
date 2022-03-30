@@ -1,4 +1,4 @@
-package cn.lanca.esaypoi.vo;
+package cn.lanca.esaypoi.vo.v0;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;
@@ -14,7 +14,7 @@ import lombok.Data;
  * @since 2022/3/25 14:20  <br>
  */
 @Data
-public class CommonVo {
+public class CommonCopy_Vo {
 
 
     @ExcelProperty(value = "网店商品分组", index = 0)
@@ -55,24 +55,20 @@ public class CommonVo {
     private String a16 = "";
     @ExcelProperty(value = "条形码", index = 17)
     private String a17 = "";
-    @ExcelProperty(value = "产品图片(数据库)", index = 18)
+    @ExcelProperty(value = "产品图片", index = 18)
     private String a18 = "";
     @ExcelProperty(value = "对应商品编码", index = 19)
     private String a19 = "";
-
-
     @ExcelProperty(value = "批准文号_A", index = 20)
     private String a20 = "";
-    @ExcelProperty(value = "药品规格_A_表原始规格", index = 21)
+    @ExcelProperty(value = "药品规格_A_表_不动", index = 21)
     private String a21 = "";
-    @ExcelProperty(value = "药品规格_A_库原始规格", index = 22)
+    @ExcelProperty(value = "药品规格_A_库_不动", index = 22)
     private String a22 = "";
 
-//    @ExcelProperty(value = "药品规格_B_表模糊数据", index = 23)
-    @ExcelProperty(value = "序列", index = 23)
+    @ExcelProperty(value = "药品规格_B_表_模糊", index = 23)
     private String a23 = "";
-//    @ExcelProperty(value = "药品规格_B_库模糊数据", index = 24)
-    @ExcelProperty(value = "药品ID", index = 24)
+    @ExcelProperty(value = "药品规格_B_库_模糊", index = 24)
     private String a24 = "";
 
     @ExcelProperty(value = "序列", index = 25)
@@ -82,7 +78,5 @@ public class CommonVo {
 
     @ExcelProperty(value = "", index = 27)
     private String key = "";
-    @ExcelProperty(value = "图片名称", index = 28)
-    private String key2 = "";
 
 }
