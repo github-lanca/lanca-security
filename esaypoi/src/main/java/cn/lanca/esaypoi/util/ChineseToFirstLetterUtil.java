@@ -14,6 +14,7 @@ import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombi
  */
 public class ChineseToFirstLetterUtil {
 
+
     /**
      * title:<font size = "1"><b></b></font><br>
      * description:<font size = "1"><b>简拼音大写</b></font><br>
