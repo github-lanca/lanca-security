@@ -1,6 +1,7 @@
-package cn.lanca.vo;
+package cn.lanca.security.service;
 
-import lombok.Data;
+import cn.lanca.security.SysUser;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * project name:<font size="1"><b>小芄健康数据运营平台</b></font><br>
@@ -10,23 +11,8 @@ import lombok.Data;
  *
  * @author <a href="mail to: ">mei.hongliang<br>
  * @version 1.0.0<br>
- * @since 2022/3/25 11:23  <br>
+ * @since 2022/4/1 15:52  <br>
  */
-@Data
-public class ShArea {
-
-    private Long id;
-    private Long pid;
-    private String shortName;
-    private String name;
-    private String mergeName;
-    private Integer level;
-    private String pinyin;
-    private String code;
-    private String zipCode;
-    private String first;
-    private String lng;
-    private String lat;
-
+public interface ISysUserService2 extends IService<SysUser> {
 
 }

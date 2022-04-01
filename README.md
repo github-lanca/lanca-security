@@ -3,35 +3,44 @@
 #### 介绍
 spring_security
 
-#### 软件架构
-软件架构说明
+#### 说明
+各种技术练习模块，非常随意
+
+#### maven说明
+pom.xml使用规范
+```xml
+ <dependencies>
+    <!-- #1。内部模块依赖-->
+    <dependency>
+        <groupId>cn.lanca</groupId>
+        <artifactId>common</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    
+    <!-- #2。spring模块依赖-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-oauth2-client</artifactId>
+    </dependency>
+    
+    <!-- #3。第三方模块依赖-->
+    <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>3.5.1</version>
+    </dependency>
+</dependencies>
+<!-- 模块化标识 主要是为了全部maven依赖统一在一个下面-->
+<modules>
+    <module>esaypoi</module>
+    <module>springboot_mpp</module>
+    <module>springboot_youzan</module>
+    <module>springboot_test</module>
+    <module>springboot_schedule</module>
+    <module>common</module>
+    <module>ip-spring-boot-start</module>
+    <module>springboot-oauth2</module>
+</modules>
+```
 
 
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)

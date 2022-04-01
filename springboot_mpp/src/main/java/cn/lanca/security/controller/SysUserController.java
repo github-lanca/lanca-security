@@ -1,10 +1,15 @@
 package cn.lanca.security.controller;
 
 import cn.lanca.annotation.KthLog;
+import cn.lanca.security.SysUser;
+import cn.lanca.security.service.ISysUserService2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * project name:<font size="1"><b>小芄健康数据运营平台</b></font><br>
@@ -19,10 +24,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SysUserController {
 
+    @Autowired
+    private ISysUserService2 sysUserService;
+
 
     @PutMapping("sys_user/test/{id}")
     @KthLog("这是注解打日志描述内容")
-    public void test(@PathVariable("id") Integer id){
+    public void test(@PathVariable("id") Integer id) {
+        List<SysUser> list = sysUserService.lambdaQuery().list();
+        list.forEach(System.out::println);
 
     }
 
@@ -32,22 +42,4 @@ public class SysUserController {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 }

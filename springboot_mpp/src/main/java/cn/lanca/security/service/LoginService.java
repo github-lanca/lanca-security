@@ -7,6 +7,7 @@ import cn.lanca.vo.LoginParam;
  * @author mei.hongliang
  * @since 2022/2/24 14:47
  */
-public interface LoginService {
+public interface LoginService  {
+
     AjaxResult login(LoginParam loginParam);
 }

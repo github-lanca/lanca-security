@@ -8,4 +8,5 @@ import cn.lanca.security.SysUser;
  * @since 2022/2/24 15:31
  */
 public interface UserMapper extends BaseMapper<SysUser> {
+
 }

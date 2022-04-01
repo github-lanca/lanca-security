@@ -1,17 +1,14 @@
 package cn.lanca.security.service.impl;
 
-import cn.lanca.security.SysUser;
+import cn.lanca.security.service.LoginService;
 import cn.lanca.security.util.JwtUtil;
 import cn.lanca.vo.AjaxResult;
 import cn.lanca.vo.LoginParam;
-import cn.lanca.security.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 /**
