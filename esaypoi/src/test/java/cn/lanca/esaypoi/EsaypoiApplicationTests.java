@@ -1,5 +1,6 @@
 package cn.lanca.esaypoi;
 
+import cn.lanca_ip.service.IpServiceImpl;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -7,6 +8,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
@@ -43,6 +45,21 @@ class EsaypoiApplicationTests {
 //    }
 
 
+    /**
+     * 注入功能类
+     */
+    @Autowired
+    private IpServiceImpl ipService;
+
+    /**
+     * 使用该方法
+     */
+    @Test
+    void testA() {
+        System.out.println("其他模块调用他人Start组件");
+        // 使用该方法
+        ipService.printIp();
+    }
 
     @Test
     void apachePoiTest() throws IOException, InvalidFormatException {
@@ -83,7 +100,7 @@ class EsaypoiApplicationTests {
     }
 
     @Test
-    public void easyExcel(){
+    public void easyExcel() {
 //        String fileName = TestFileUtil.getPath() + "demo" + File.separator + "demo.xlsx";
 //        // 这里 需要指定读用哪个class去读，然后读取第一个sheet 文件流会自动关闭
 //        EasyExcel.read(fileName, DemoData.class, new DemoDataListener()).sheet().doRead();
