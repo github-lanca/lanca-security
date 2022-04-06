@@ -62,6 +62,8 @@ public class LoginFilter extends OncePerRequestFilter {
             if (!Objects.isNull(user)) {
                 // 手动组装一个认证对象
                 logger.info("user有值/username=" + username);
+                // principal 最重要的
+                // credentials 资格证书
                 Authentication authentication = new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities());
                 // 将认证对象放到上下文中
                 SecurityContextHolder.getContext().setAuthentication(authentication);

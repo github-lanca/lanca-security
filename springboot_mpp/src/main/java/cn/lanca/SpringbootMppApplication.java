@@ -14,7 +14,9 @@ public class SpringbootMppApplication {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext run = SpringApplication.run(SpringbootMppApplication.class, args);
-        System.out.println(run);
+        for (String beanDefinitionName : run.getBeanDefinitionNames()) {
+            System.out.println(beanDefinitionName);
+        }
     }
 
 }

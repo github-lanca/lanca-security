@@ -1,0 +1,27 @@
+server:
+  port: 8088
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: pig-auth
+#          uri: http://www.baidu.com
+#          uri: http://localhost:8080
+          uri: lb://pig-auth
+          #          uri: lb://pig-auth   lb(注册中心中服务名字)方式 uri: lb://服务名字
+          predicates:
+            - Path=/
+  application:
+    name: security-gateway
+    nacos:
+      discovery:
+        # nacos注册中心和注册配置服务地址
+        server-addr: ${NACOS_HOST:192.168.2.217}:${NACOS_PORT:8848}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+  config:
+    import:
+      - optional:nacos:application-${spring.profiles.active}.yml
+      - optional:nacos:${spring.application.name}-${spring.profiles.active}.yml
+  profiles:
+    active: dev

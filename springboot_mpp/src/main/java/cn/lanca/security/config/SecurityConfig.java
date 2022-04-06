@@ -57,10 +57,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         // 关闭csrf和frameOptions，如果不关闭会影响前端请求接口（这里不展开细讲了，感兴趣的自行了解）
         http.csrf().disable();
+        http.headers().frameOptions().disable();
         // Spring Security will never create an HttpSession
         // and it will never use it to obtain the SecurityContext
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.headers().frameOptions().disable();
         // 开启跨域以便前端调用接口
         http.cors();
         // 这是配置的关键，决定哪些接口开启防护，哪些接口绕过防护
@@ -72,12 +72,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register/**").anonymous()
                 .antMatchers("/login/**").anonymous()
                 .antMatchers("/loggggout/**").anonymous()
+                .antMatchers("/logout","/logout/**").anonymous()
                 .antMatchers("/not/**").anonymous()
                 // 这里意思是其它所有接口需要认证才能访问
                 .anyRequest().authenticated()
                 // 指定认证错误处理器
                 .and().exceptionHandling().authenticationEntryPoint(new MyEntryPoint());
         http.addFilterBefore(loginFilter, UsernamePasswordAuthenticationFilter.class);
+        http.logout();
+        http.formLogin();
     }
 
 
