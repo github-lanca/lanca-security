@@ -69,4 +69,26 @@ public class ReplaceStriUtils {
         }
         return result;
     }
+
+    public static String change(String args) {
+        args = args.trim();
+        if (StringUtils.hasText(args)) {
+            args = args.replace("*", "_");
+            args = args.replace("×", "_");
+            args = args.replace("袋/盒", "");
+            args = args.replace("片/盒", "");
+            args = args.replace("瓶/盒", "");
+            args = args.replace("片/瓶", "");
+            args = args.replace("袋", "");
+            args = args.replace("板", "");
+            args = args.replace("支", "");
+            args = args.replace("片", "");
+            args = args.replace("/盒", "");
+            args = args.replace("克", "g");
+            args = args.replace("/包", "");
+            args = args.replace("毫升", "ml");//69
+            args = args.replace("/", "");
+        }
+        return args;
+    }
 }
