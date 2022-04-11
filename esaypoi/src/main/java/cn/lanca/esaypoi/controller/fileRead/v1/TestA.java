@@ -2,6 +2,7 @@ package cn.lanca.esaypoi.controller.fileRead.v1;
 
 import cn.lanca.esaypoi.util.ExcelListener;
 import com.alibaba.excel.EasyExcel;
+import org.springframework.util.StringUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,6 +16,7 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * project name:<font size = "1"><b>小芄健康数据运营平台</b></font><br>
@@ -33,33 +35,54 @@ public class TestA {
         System.out.println(image.get(0));
         Path startPath = Paths.get("/Users/meihongliang/Downloads/建设路-316图片");
         List<String> fileName = new ArrayList<>();
+        AtomicInteger atomicInteger = new AtomicInteger(0);
         // 文件夹遍历
         Files.walkFileTree(startPath, new SimpleFileVisitor<Path>() {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
-                System.out.println("File : " + file.getFileName());
+                // System.out.println("File : " + file.getFileName());
                 fileName.add(file.getFileName().toString());
                 return FileVisitResult.CONTINUE;
             }
 
+            @Override
+            public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+                atomicInteger.incrementAndGet();
+                return super.postVisitDirectory(dir, exc);
+            }
         });
         System.out.println(fileName.size());
+        System.out.println("文件夹数量: " + atomicInteger);
         System.out.println("----------");
+        AtomicInteger number = new AtomicInteger(0);
         image.forEach(e -> {
             String a3 = e.getA3();
+            String a2 = e.getA2();
+            String a4 = regex(e.getA4());
+            String ff = a3 + a2 + a4;
             StringBuffer sb = new StringBuffer();
             fileName.forEach(f -> {
-                if (f.contains(a3)) {
+                if (f.contains(ff)) {
                     sb.append(f).append(";");
                 }
             });
+            if (StringUtils.hasText(sb)) {
+                number.incrementAndGet();
+            }
             e.setA25(sb.toString());
-            System.out.println(sb);
+            // System.out.println(ff + "_" + sb);
         });
+        System.out.println("_ " + number);
+        File file1 = new File("/Users/meihongliang/Downloads/建设路-316提取图片名称_result_bak2.xlsx");
+         EasyExcel.write(file1, CommonImgName.class).sheet(image.size() + "").doWrite(image);
 
-        File file1 = new File("/Users/meihongliang/Downloads/建设路-316提取图片名称_result.xlsx");
-        EasyExcel.write(file1, CommonImgName.class).sheet(image.size() + "").doWrite(image);
+    }
 
+    private static String regex(String a4) {
+        String trim = a4.trim();
+        trim = trim.replace("％", "");
+        trim = trim.replace("*", "");
+        return trim;
     }
 
     private static List<CommonImgName> getImage() throws FileNotFoundException {
