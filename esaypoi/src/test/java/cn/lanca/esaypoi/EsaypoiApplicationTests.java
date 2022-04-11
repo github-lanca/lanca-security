@@ -17,32 +17,13 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 @SpringBootTest
 class EsaypoiApplicationTests {
 
     // Map<SheetName, List<Object>>
     public Map<String, List<Object>> map = new HashMap<>();
-
-//    @Test
-//    void contextLoads() {
-//        List<ExcelObject> dataList = new ArrayList<>();
-//        for (int i = 0; i < 10; i++) {
-//            ExcelObject userEntity = new ExcelObject();
-//            userEntity.setName("张三" + i);
-//            userEntity.setAge(20 + i);
-//            userEntity.setTime(new Date(System.currentTimeMillis() + i));
-//            dataList.add(userEntity);
-//        }
-//        EasyExcel.write("/Users/meihongliang/Working/xiaowan/code/security/esaypoi/easyexcel-user1.xls", ExcelObject.class).sheet("用户信息").doWrite(dataList);
-//    }
-//
-//    @Test
-//    void readExcel() {
-//        String filePath = "/Users/meihongliang/Working/xiaowan/code/security/esaypoi/easyexcel-user1.xls";
-//        List<ExcelObject> list = EasyExcel.read(filePath).head(ExcelObject.class).sheet().doReadSync();
-//        list.forEach(System.out::println);
-//    }
 
 
     /**
@@ -104,5 +85,13 @@ class EsaypoiApplicationTests {
 //        String fileName = TestFileUtil.getPath() + "demo" + File.separator + "demo.xlsx";
 //        // 这里 需要指定读用哪个class去读，然后读取第一个sheet 文件流会自动关闭
 //        EasyExcel.read(fileName, DemoData.class, new DemoDataListener()).sheet().doRead();
+    }
+
+    @Test
+    public void pro() {
+        Properties properties = System.getProperties();
+        properties.forEach((k, v) -> {
+            System.out.println(k + ":" + v);
+        });
     }
 }
