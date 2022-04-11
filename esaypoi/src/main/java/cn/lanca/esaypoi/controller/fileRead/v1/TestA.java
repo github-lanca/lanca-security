@@ -2,6 +2,7 @@ package cn.lanca.esaypoi.controller.fileRead.v1;
 
 import cn.lanca.esaypoi.util.ExcelListener;
 import com.alibaba.excel.EasyExcel;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
 import java.io.File;
@@ -28,6 +29,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @version 1.0.0<br>
  * @since [1] [2022/4/11 13:52] [meihongliang] [新建] <br>
  */
+@Slf4j
 public class TestA {
     public static void main(String[] args) throws IOException {
         List<CommonImgName> image = getImage();
@@ -51,9 +53,9 @@ public class TestA {
                 return super.postVisitDirectory(dir, exc);
             }
         });
-        System.out.println(fileName.size());
-        System.out.println("文件夹数量: " + atomicInteger);
-        System.out.println("----------");
+        log.info(fileName.size() + "");
+        log.info("文件夹数量: " + atomicInteger);
+        log.info("----------");
         AtomicInteger number = new AtomicInteger(0);
         image.forEach(e -> {
             String a3 = e.getA3();
@@ -74,7 +76,7 @@ public class TestA {
         });
         System.out.println("_ " + number);
         File file1 = new File("/Users/meihongliang/Downloads/建设路-316提取图片名称_result_bak2.xlsx");
-         EasyExcel.write(file1, CommonImgName.class).sheet(image.size() + "").doWrite(image);
+        // EasyExcel.write(file1, CommonImgName.class).sheet(image.size() + "").doWrite(image);
 
     }
 

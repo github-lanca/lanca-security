@@ -11,6 +11,9 @@ logging:
     com:
       alibaba:
         excel:
+          read:
+            processor:
+              DefaultAnalysisEventProcessor: ERROR
           analysis:
             v03:
               handlers:

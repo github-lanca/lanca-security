@@ -68,14 +68,16 @@
 
     <!-- 模块化标识 主要是为了全部maven依赖统一在一个下面-->
     <modules>
+        <module>common</module>
         <module>esaypoi</module>
         <module>springboot_mpp</module>
         <module>springboot_youzan</module>
         <module>springboot_test</module>
         <module>springboot_schedule</module>
-        <module>common</module>
         <module>ip-spring-boot-start</module>
         <module>springboot-oauth2</module>
         <module>springboot-reactive</module>
+        <module>springboot-juc</module>
+        <module>spring-cloud-gateway</module>
     </modules>
 </project>
